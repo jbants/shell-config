@@ -56,17 +56,11 @@ export UPDATE_ZSH_DAYS=7
 plugins=(
   git
   docker
-  z
   fabric
-  kubectl
-  helm
-  kops
   terraform
-  fzf # https://github.com/junegunn/fzf
   zsh-autosuggestions # https://github.com/zsh-users/zsh-autosuggestions
   history-substring-search # https://github.com/zsh-users/zsh-history-substring-search
   zsh-syntax-highlighting # https://github.com/zsh-users/zsh-syntax-highlighting
-  kubetail # https://github.com/johanhaleby/kubetail
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -103,19 +97,6 @@ dkrmv (){
     docker volume rm $(docker volume ls -qf dangling=true) &>/dev/null
 }
 
-# Kubernetes
-export KUBECONFIG=$HOME/.kube/config
-for file_name in ~/.kube/*config.yaml; do
-  export KUBECONFIG=$KUBECONFIG:${file_name}
-done
-
-alias mk="minikube"
-alias k="kubectl"
-alias kg="kubectl get"
-alias kd="kubectl describe"
-
-alias kctx="kubectx"
-alias kns="kubens"
 
 # https://github.com/junegunn/fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
